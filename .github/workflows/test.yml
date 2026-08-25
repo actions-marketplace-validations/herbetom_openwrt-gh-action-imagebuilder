@@ -30,7 +30,7 @@ jobs:
             distrib_arch: aarch64_cortex-a53
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.1
 
       - name: Add test directories
         run: mkdir -p artifacts files
