@@ -16,6 +16,7 @@ jobs:
       matrix:
         release:
           - main
+          - 25.12.2
           - 24.10.2
         target:
           - x86-64
@@ -29,7 +30,7 @@ jobs:
             distrib_arch: aarch64_cortex-a53
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Add test directories
         run: mkdir -p artifacts files
@@ -60,7 +61,7 @@ jobs:
       - name: output profiles.json
         run: jq '.' artifacts/bin/targets/${{ steps.build.outputs.target }}/${{ steps.build.outputs.subtarget }}/profiles.json
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.release }}-${{ matrix.target }}
           path: |
